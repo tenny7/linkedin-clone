@@ -1,6 +1,15 @@
 import React from 'react'
 
 function Login() {
+
+    const register = () => {
+
+    }
+
+    const login = () => {
+
+    }
+    
     return (
         <div className="login">
             <form>
@@ -9,6 +18,7 @@ function Login() {
                 <input type="email" placeholder="Email"/>
                 <input type="password" placeholder="Password"/>
                 <button type="submit">Sign In</button>
+                <p>Dont't have an account? <span>Register</span></p>
             </form>
         </div>
     )
