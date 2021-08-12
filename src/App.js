@@ -1,27 +1,72 @@
-import React from 'react';
+import  React, {useEffect} from 'react';
 import './css/App.css';
-import Login from './components/Login';
-import {useSelector, useDispatch} from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { actionCreators } from './state/index'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Login from './components/auth/Login';
+import Products from './components/shop/pages/Products'
+import useStore from './store/store'
+import firebase from './config/firebase'
+import axios from 'axios'
+import Header from './components/layouts/Navigation'
+
 
 function App() {
-
-  const account = useSelector( (state) => state.account)
-  const dispatch = useDispatch()
-
-  const {depositMoney, withdrawMoney} = bindActionCreators(actionCreators, dispatch)
+  const products = useStore(state => state.products)
   
+  const setProducts = useStore(state => state.setProducts);
+
+  // const addProduct = () => {
+  //    increaseProduct(1)
+  // }
+
+  // const removeProduct = () => {
+  //   decreaseProduct(1)
+  // }
+
+  // firebase
+  //   .firestore()
+  //   .collection("notes")
+  //   .add({
+  //     title: "Working",
+  //     body: "This is to check the Integration is working",
+  // })
+  const fetchProducts = async () => {
+    let base = 'http://api.fakeshop-api.com'
+    let endpoint = '/products/getAllProducts'
+    // https://fakestoreapi.com/products
+    // ,{ headers: {'Access-Control-Allow-Origin':'*'}}
+    const response = axios.get('https://fakestoreapi.com/products')
+                          .then( (res) => { setProducts(res); console.log(res) }).catch((err) => { console.log("err", err) })
+  }
+  
+  useEffect(() => {
+    fetchProducts()
+  },[])
+    // console.log(res)
+    
+  
+
+              
+                
+
   return (
     <div className="App">
-      <header className="app__body">
-        <h1>{account}</h1>
-        <button onClick={() => depositMoney(1000)}>Deposit</button>
-        <button onClick={() => withdrawMoney(500)}>Withdraw</button>
-        <Login />
-      </header>
+      {/* <Products/> */}
+      <Router>
+      <Header/>
+      <Switch>
+        <Route path="/" exact component={Products} />
+      </Switch>
+      </Router> 
     </div>
   );
 }
 
 export default App;
+
+// <header className="app__body">
+//           <h2>{products}</h2>
+//           <div>
+//             <button onClick={addProduct}>Increase Product</button>
+//             <button onClick={removeProduct}>Decrease Product</button>
+//           </div>
+//       </header>
