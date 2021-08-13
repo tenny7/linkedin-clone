@@ -32,6 +32,7 @@ function App() {
   const response = axios.get('https://fakestoreapi.com/products')
   .then( (res) => {
     setProducts(res)
+    console.log(res)
   }).catch((err) => {
                     console.log("err", err)
               })
@@ -39,6 +40,7 @@ function App() {
 
   return (
     <div className="App">
+      <Products/>
       <Router>
       <Header/>
       <Switch>

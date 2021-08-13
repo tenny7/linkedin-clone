@@ -13,4 +13,4 @@ export const [useStore] = create(set => ({
               
 // @ts-ignore
 // store = devtools(store)
-export default devtools(useStore)
+export default useStore
