@@ -1,5 +1,6 @@
 import React from 'react'
 import {useStore} from './../../../store/store';
+import { Link } from 'react-router-dom'
 
 const ProductComponent = () => {
     const products = useStore(state => state.products )
@@ -8,6 +9,7 @@ const ProductComponent = () => {
         const {id, title, price, category, image} = product
         return (    
             <div className="ui four wide column" key={id}>
+                <Link to={`/product/${id}`}>
                 <div className="ui link cards">
                     <div className="ui card">
                         <div className="ui image">
@@ -20,6 +22,7 @@ const ProductComponent = () => {
                         </div>
                     </div>
                 </div>
+                </Link>
             </div>
         );
     })

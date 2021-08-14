@@ -3,6 +3,7 @@ import  React, {useEffect} from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Login from './components/auth/Login';
 import Products from './components/shop/pages/Products'
+import ProductDetails from './components/shop/pages/ProductDetails'
 import { useStore } from './store/store'
 import firebase from './config/firebase'
 import axios from 'axios'
@@ -14,15 +15,6 @@ function App() {
   const products = useStore(state => state.products)
   
   const setProducts = useStore((state) => state.setProducts);
-
-  // const addProduct = () => {
-  //    increaseProduct(1)
-  // }
-
-  // const removeProduct = () => {
-  //   decreaseProduct(1)
-  // }
-
   // firebase
   //   .firestore()
   //   .collection("notes")
@@ -32,7 +24,7 @@ function App() {
   // })
   const fetchProducts = async () => {
     const response = await axios.get('https://fakestoreapi.com/products')
-                          .then( (res) => { setProducts(res.data); console.log(res.data) }).catch((err) => { console.log("err", err) })
+                          .then( (res) => { setProducts(res.data);}).catch((err) => { console.log("err", err) })
   }
   
   useEffect(() => {
@@ -47,6 +39,8 @@ function App() {
         <Header/>
         <Switch>
           <Route path="/" exact component={Products} />
+          <Route path="/product/:productId" exact component={ProductDetails} />
+          <Route>404 not found</Route>
         </Switch>
       </Router> 
     </div>
