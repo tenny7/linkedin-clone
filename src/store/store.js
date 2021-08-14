@@ -4,13 +4,10 @@ import create from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
 
 
-export const [useStore] = create(set => ({
-    products: {},
-    setProducts: (prod) => set({
-        products: prod
+export const useStore = create(set => ({
+    products: [],
+    setProducts: (product) => set({
+        products: product
     })
 }))
-              
-// @ts-ignore
-// store = devtools(store)
-export default useStore
+

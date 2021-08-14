@@ -1,18 +1,19 @@
-import React from 'react';
-import './css/App.css';
+import  React, {useEffect} from 'react';
+// import './css/App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Login from './components/auth/Login';
 import Products from './components/shop/pages/Products'
-import useStore from './store/store'
+import { useStore } from './store/store'
 import firebase from './config/firebase'
 import axios from 'axios'
-import Header from './components/layouts/Navigation'
+import Header from './components/layouts/Header'
+// import Header from './components/layouts/Navigation'
 
 
 function App() {
   const products = useStore(state => state.products)
   
-  const setProducts = useStore(state => state.setProducts);
+  const setProducts = useStore((state) => state.setProducts);
 
   // const addProduct = () => {
   //    increaseProduct(1)
@@ -29,23 +30,24 @@ function App() {
   //     title: "Working",
   //     body: "This is to check the Integration is working",
   // })
-  const response = axios.get('https://fakestoreapi.com/products')
-  .then( (res) => {
-    setProducts(res)
-    console.log(res)
-  }).catch((err) => {
-                    console.log("err", err)
-              })
-                
+  const fetchProducts = async () => {
+    const response = await axios.get('https://fakestoreapi.com/products')
+                          .then( (res) => { setProducts(res.data); console.log(res.data) }).catch((err) => { console.log("err", err) })
+  }
+  
+  useEffect(() => {
+    fetchProducts()
+  },[])
+    
 
   return (
     <div className="App">
-      <Products/>
+      {/* <Products/> */}
       <Router>
-      <Header/>
-      <Switch>
-        <Route path="/" exact component={Products} />
-      </Switch>
+        <Header/>
+        <Switch>
+          <Route path="/" exact component={Products} />
+        </Switch>
       </Router> 
     </div>
   );
@@ -53,10 +55,3 @@ function App() {
 
 export default App;
 
-// <header className="app__body">
-//           <h2>{products}</h2>
-//           <div>
-//             <button onClick={addProduct}>Increase Product</button>
-//             <button onClick={removeProduct}>Decrease Product</button>
-//           </div>
-//       </header>
