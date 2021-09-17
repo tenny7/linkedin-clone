@@ -1,30 +1,28 @@
 import React from 'react'
-// import {useSelector, useDispatch} from 'react-redux'
-// import {bindActionCreators} from 'react'
-// import {actionCreators} from './../state/index'
-
+import './../../css/Login.css'
 
 function Login() {
-
-    const register = () => {
-
-    }
-
-    const login = () => {
-
-    }
     
     return (
         <div className="login">
-            <form>
-                <input type="text" placeholder="Full Name ( if registering )"/>
-                <input type="text" placeholder="Profile Pics Url (Optional)"/>
-                <input type="email" placeholder="Email"/>
-                <input type="password" placeholder="Password"/>
-                <button type="submit">Sign In</button>
-                <p>Dont't have an account? <span>Register</span></p>
-            </form>
+            <div className="ui centered two column grid form_css"></div>
+                {/* <div className="card card_css">
+                <h2 className="ui header signup_css">Login</h2>
+                <form className="ui form">
+                        <div className="field">
+                            <label>Email</label>
+                            <input  type="email" 
+                                    placeholder="Password"/>
+                        </div>
+                        <div className="field">
+                            <label>Password</label>
+                            <input  type="password" 
+                                    placeholder="Password"/>
+                        </div>
+                </form> */}
+            </div>
         </div>
+       
     )
 }
 

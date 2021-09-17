@@ -1,0 +1,13 @@
+.h2-custom-css {
+    background-color: aquamarine;
+    color:#000000; 
+    padding:10px;
+}
+
+.header_logo {
+    padding-top: 5px !important;
+    margin-left:10px !important;
+    align-items: center !important;
+    align-content: center !important;
+}
+
