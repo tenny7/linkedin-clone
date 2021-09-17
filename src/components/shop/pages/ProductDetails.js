@@ -5,7 +5,6 @@ import { useStore } from '../../../store/store'
 
 const Product = () => {
     const { productId } = useParams()
-    // console.log(productId)
     const selectedProduct = useStore(state => state.selectedProduct)
     const setSelectedProduct = useStore(state => state.setSelectedProduct)
 

@@ -1,0 +1,5 @@
+.card_css {
+    /* object-fit: contain !important; */
+    height: 20vh;
+    box-sizing: border-box;
+}
