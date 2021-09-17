@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 // @ts-nocheck
 import create from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
