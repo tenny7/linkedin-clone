@@ -1,5 +1,6 @@
 import firebase from 'firebase/app'
 import 'firebase/firestore'
+import 'firebase/auth'
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
@@ -13,4 +14,9 @@ var firebaseConfig = {
 
   // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+export const auth = firebase.auth();
+export const firstore = firebase.firestore();
+const GoogleProvider = new firebase.auth.GoogleAuthProvider();
+GoogleProvider.setCustomParameters({ prompt: 'select_account' });
+export const signInWithGoogle = () => auth.signInWithPopup(GoogleProvider);
 export default firebase

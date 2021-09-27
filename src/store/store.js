@@ -11,6 +11,10 @@ export const useStore = create(set => ({
     selectedProduct : {},
     setSelectedProduct : (product) => set({
         selectedProduct : product
+    }),
+    currentUser: null,
+    setCurrentUser: (user) => set({
+        currentUser: user
     })
 }))
 
