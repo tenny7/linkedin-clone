@@ -15,6 +15,16 @@ export const useStore = create(set => ({
     currentUser: null,
     setCurrentUser: (user) => set({
         currentUser: user
+    }),
+    initialState: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+    },
+    setFormData: (formData) => set({
+        initialState: formData,
     })
+
 }))
 

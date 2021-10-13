@@ -4,9 +4,11 @@ import axios from "axios"
 import { useStore } from '../../../store/store'
 
 const Product = () => {
+    // @ts-ignore
     const { productId } = useParams()
     // @ts-ignore
     const selectedProduct = useStore(state => state.selectedProduct)
+    // @ts-ignore
     const setSelectedProduct = useStore(state => state.setSelectedProduct)
 
     const fetchProductDetails = async () => {

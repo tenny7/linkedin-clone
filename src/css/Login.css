@@ -33,3 +33,8 @@
     border-radius: 5px;
 }
 
+.card_css {
+    background-color: #333333 !important;
+    color: #ffffff !important;
+}
+

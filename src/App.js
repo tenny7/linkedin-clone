@@ -1,17 +1,14 @@
 import  React, { useEffect, useState } from 'react'; 
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
-import Login from './components/auth/Login';
-import Register from './components/auth/Register';
-import Dashboard from './components/manage/Dashboard';
-import Products from './components/shop/pages/Products'
-import ProductDetails from './components/shop/pages/ProductDetails'
+import { Layout, Typography, Space } from 'antd';
+import { Products, ProductDetails, ProductComponent, Homepage } from './components/shop/pages'
+import { Login, Register } from './components/auth/'
+import { Dashboard } from './components/manage';
 import { useStore } from './store/store'
 import firebase from './config/firebase'
 import axios from 'axios'
-import Header from './components/layouts/Header'
-import Homepage from './components/shop/pages/Homepage';
+import { Header } from './components/layouts'
 import { auth } from './config/firebase'
-
 
 
 function App() {
@@ -20,8 +17,6 @@ function App() {
   // @ts-ignore
   const setProducts = useStore((state) => state.setProducts);
   // @ts-ignore
-  
-  
   
   const fetchProducts = async () => {
     // eslint-disable-next-line
